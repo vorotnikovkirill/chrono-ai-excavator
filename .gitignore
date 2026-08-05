@@ -1,0 +1,49 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual and Conda environments
+.venv/
+venv/
+env/
+.conda/
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# Build and package artifacts
+build/
+dist/
+*.egg-info/
+
+# Generated simulation and media outputs
+runs/
+simulation_output/
+raw_output/
+frames/
+rendered_frames/
+generated_videos/
+videos/generated/
+
+# Generated PDF build files (source documentation remains tracked)
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc

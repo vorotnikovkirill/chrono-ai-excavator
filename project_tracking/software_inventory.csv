@@ -1,0 +1,11 @@
+software_name,version,role,license,cost_amount,cost_currency,cost_basis,verification_source,notes
+macOS,26.6,operating system,unknown,,,not separately measurable,user-provided verified environment,arm64; total acquisition or subscription cost not available
+Python,3.12.13,project runtime,unknown,,,not separately measurable,python runtime output,Conda environment chrono; packaged by conda-forge
+Project Chrono/PyChrono,not exposed,multibody simulation,unknown,,,not separately measurable,pychrono module inspection,Module path verified in Conda environment chrono
+PyChrono Irrlicht module,available,visualization capability,unknown,,,not separately measurable,import check,No display window opened
+PyChrono postprocess module,available,postprocessing capability,unknown,,,not separately measurable,import check,Availability only
+Git,2.50.1,version control,unknown,,,not separately measurable,git --version,Apple Git-155
+GitHub CLI,2.96.0,GitHub command-line client,unknown,,,not separately measurable,gh --version,No GitHub operation performed
+Codex CLI,0.146.0,AI-assisted development,unknown,,,not separately measurable,codex --version,Incremental project cost unavailable
+ChatGPT,not exposed,engineering discussion,unknown,,,not separately measurable,user-provided project workflow,Subscription and incremental project costs unavailable
+FFmpeg,not installed,future video encoding,not applicable,,,not separately measurable,user-provided verified environment,Intentionally deferred
