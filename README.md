@@ -4,7 +4,7 @@ Chrono AI Excavator is a public engineering demonstrator built around a clear wo
 
 ## Current status
 
-**Milestone 1 — accepted and complete.** The scaffold is ready for its initial public commit and publication, but publication has not yet occurred. A failed publication attempt exposed orchestration errors without invalidating the scaffold. This milestone contains only the repository scaffold, environment checks, project ledger, tests, and documentation foundation.
+**Milestone 1 — accepted, published, and complete.** The initial scaffold was committed and is now publicly available at [vorotnikovkirill/chrono-ai-excavator](https://github.com/vorotnikovkirill/chrono-ai-excavator). This milestone contains only the repository scaffold, environment checks, project ledger, tests, and documentation foundation.
 
 No Milestone 2 functionality exists. Excavator geometry, joints, motors, contacts, control, telemetry, cameras, rendering, PDF, presentation, and video are not implemented.
 
@@ -25,7 +25,7 @@ No display window is opened. The current verified environment does not include p
 
 ## Roadmap
 
-Milestone 2 will create the first visual static scene. Later milestones will add a minimal mechanical assembly, torque-driven joints and contacts, a short scripted digging cycle, telemetry, and a visually polished result. Planned views include a cinematic external camera, a bucket-mounted camera, and a cabin/operator-view camera. Active-joint, target-versus-actual motion, torque, and selected contact telemetry visualization are also planned. PDF and presentation generation remain deferred until a visually meaningful milestone.
+Milestone 2 is the next planned step and will create the first visual static scene. Dynamics, joints, contacts, torque control, telemetry, and cameras remain future work. Planned views include a cinematic external camera, a bucket-mounted camera, and a cabin/operator-view camera. PDF and presentation generation remain deferred until a visually meaningful milestone.
 
 See [the living technical report](docs/technical_report.md) and [the project ledger policy](project_tracking/README.md) for scope and evidence.
 
