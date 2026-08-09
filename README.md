@@ -8,6 +8,8 @@ Chrono AI Excavator is a public engineering demonstrator built around a clear wo
 
 **Milestone 3 — complete.** The articulated architecture was implemented, display-free verified, human visually accepted, committed, pushed, fast-forward merged into `main`, and published in the public repository. It uses five primary mechanical bodies (`BASE`, `UPPER`, `BOOM`, `STICK`, and `BUCKET`), four functional revolute joints, and zero-gravity topology verification.
 
+**Milestone 4 — in progress.** Four torque-actuated joints, bounded PD control, and small deterministic cubic target trajectories are implemented with display-free independent-joint and combined-control verification. Human interactive review remains pending.
+
 Motors, torque control, state-machine control, contacts, dynamic cubes, telemetry, active-joint visualization, bucket-mounted and cabin/operator cameras, and video remain future work.
 
 The verified local environment is macOS 26.6 on arm64 with the `chrono` Conda environment, Python 3.12.13, and PyChrono. `ChSystemNSC`, `ChBody`, `ChLinkMotorRotationTorque`, Irrlicht, and postprocess are available. VSG and FFmpeg are unavailable and are not required for this milestone. PyChrono is supplied by Conda and is intentionally not declared as a PyPI dependency.
@@ -23,6 +25,8 @@ python scripts/show_static_scene.py --headless-check
 python scripts/show_static_scene.py
 python scripts/show_mechanical_scene.py --headless-check
 python scripts/show_mechanical_scene.py
+python scripts/show_controlled_scene.py --headless-check
+python scripts/show_controlled_scene.py
 python scripts/summarize_project_tracking.py
 PYTHONPATH=src python -m unittest discover -s tests -v
 ```
@@ -31,7 +35,7 @@ The `--headless-check` command and tests do not open a display. The viewer comma
 
 ## Roadmap
 
-Milestones 2 and 3 are complete. Motors, control, contacts, telemetry, camera variants, rendering, and video remain future work. PDF and presentation generation remain deferred.
+Milestones 2 and 3 are complete. Milestone 4 actuation and basic control are implemented and awaiting human review. Contacts, dynamic cubes, scoop/dump behavior, an excavation state machine, telemetry/HUD, active-joint visualization, bucket and cabin cameras, rendering, and final video remain future work. PDF and presentation generation remain deferred.
 
 See [the living technical report](docs/technical_report.md) and [the project ledger policy](project_tracking/README.md) for scope and evidence.
 

@@ -109,3 +109,21 @@ The accepted feature branch was then fast-forward merged into `main` and pushed 
 **Milestone 3 is complete.**
 
 The next planned stage remains future work and is named only at a high level: actuation and control foundation.
+
+## 15. Milestone 4 torque actuation and basic joint control
+
+Milestone 4 replaces the four revolute constraints in a separate controlled-scene build with exactly four `ChLinkMotorRotationTorque` links. Each torque motor embeds the corresponding spindle constraint, so no duplicate revolute constraint is stacked on the same axis. The accepted Milestone 3 mechanical scene remains an independent reference model.
+
+Each joint uses bounded PD control, `τ = clamp(Kp(θref−θ) + Kd(ωref−ω), −τmax, +τmax)`, with gains in N·m/rad and N·m·s/rad and torque limits in N·m. These values are deterministic toy-model controller placeholders rather than calibrated excavator actuators. Target deltas are +12° slew, +8° boom, −8° stick, and +10° bucket, using the one-second cubic transition `s(u)=3u²−2u³` and its analytic velocity.
+
+Motion `(Kp, Kd)` values are `(1500, 2500)` for slew, `(2000, 1200)` for boom, `(1500, 700)` for stick, and `(800, 200)` for bucket. Zero-reference hold values are `(1500, 2500)`, `(6500, 2800)`, `(6000, 2200)`, and `(1600, 500)`, respectively. Torque limits remain 800, 800, 600, and 300 N·m. The one-second transition is followed by a deterministic two-second settling interval.
+
+Zero gravity isolates actuator and feedback behavior from gravity compensation, payload, and contact. Independent validation commands each joint while the other three hold zero reference; a combined smoke test commands all four. The checks require finite state, correct motion direction, final error within 1.5°, uncommanded motion within 0.5°, and strict torque saturation. The measured simulation-loop wall time is recorded separately from human and AI effort in the project ledger.
+
+The accepted independent-joint and combined headless simulation loops took `0.266271 s` of measured wall time.
+
+The corrected independent results are: slew 12.71° final with −0.71° error, 0.09° maximum hold deviation, and 454.59 N·m peak torque; boom 8.12° final with −0.12° error, 0.42° hold deviation, and 183.00 N·m peak; stick −7.89° final with −0.11° error, 0.44° hold deviation, and 82.01 N·m peak; and bucket 10.00° final with effectively zero error, 0.03° hold deviation, and 8.31 N·m peak. The combined four-joint smoke test also passes.
+
+Contacts, dynamic cubes, excavation sequencing, telemetry, HUD, camera variants, and video remain unimplemented.
+
+**Milestone 4 actuation and basic joint control are implemented and awaiting human review.**
