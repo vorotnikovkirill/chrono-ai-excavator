@@ -33,3 +33,7 @@ Estimate qualities are `measured`, `derived_from_timestamps`, and `approximate_e
 ChatGPT discussion and engineering decisions, project-owner task definition/execution/review/verification, Codex wall time, computation and simulation wall time, debugging, corrections, repeated runs, rework, documentation, tool versions/licenses/costs, infrastructure expenses, and AI-result disposition must remain identifiable. Overlapping human, AI, and computation periods remain separate and must never be added as though they were sequential labor. Historical estimates must state their uncertainty; unknown historical generation or review time stays blank.
 
 `software_inventory.csv` records verified or explicitly qualified versions, roles, licenses, cost bases, and evidence. A zero incremental charge must not be presented as proof that a subscription product is free.
+
+## Milestone 2 timing note
+
+Milestone 2 static-scene implementation has started. Its measured Codex, verification, and review events will be appended only from the external orchestration log; repository authors must not infer start times, end times, or wall duration from file timestamps.
