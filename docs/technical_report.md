@@ -88,11 +88,9 @@ Required final project metrics are:
 
 ## 13. Current limitations
 
-The accepted scene remains intentionally static and visually approximate. Track belts are block silhouettes, the bucket is assembled from simple boxes, and pivot details are decorative. There are no dynamic bodies, joints, motors, controllers, contacts, telemetry, alternative cameras, rendered frames, PDF, presentation, or video. The living report will later become the source for the public technical PDF.
+The articulated excavator uses preliminary toy-model masses and inertias and zero gravity for architecture validation. Track belts remain visual, the environment and 30 cubes remain fixed, and pivot markers remain decorative. There are no motors, controllers, joint limits, contacts, dynamic cubes, telemetry, alternative cameras, rendered frames, PDF, presentation, or video. The living report will later become the source for the public technical PDF.
 
-## 14. Next milestone
-
-### Milestone 3 — Mechanical Architecture
+## 14. Milestone 3 accepted mechanical architecture
 
 Milestone 3 converts the accepted visual excavator into a minimal articulated topology while retaining the fixed platform, 30 fixed cubes, receiving container, lighting, and external camera. The accepted Milestone 2 static module remains the frozen visual reference; the new mechanical module groups its excavator primitives onto five primary bodies without redesigning their initial appearance.
 
@@ -100,6 +98,10 @@ The topology is `BASE → UPPER → BOOM → STICK → BUCKET`. `BASE` is fixed;
 
 Positive mass and diagonal inertia values are preliminary toy-model mechanical properties for architecture verification only. They are finite placeholders, not calibrated real-excavator properties. Architecture validation uses zero gravity and zero initial velocity so the unactuated mechanism retains its ready-to-scoop pose during a short constraint smoke test.
 
-Display-free validation checks body status and properties, joint names and connectivity, finite pivots and axes, retained environment geometry, absence of motor links and collision response, deterministic metadata, and short-step constraint stability. Motors, controllers, limits, contacts, cube dynamics, telemetry, and camera variants remain intentionally unimplemented.
+Display-free validation checks body status and properties, joint names and connectivity, finite pivots and axes, retained environment geometry, absence of motor links and collision response, deterministic metadata, and short-step constraint stability. The accepted verification passed all 30 tests and the 0.005-second zero-gravity constraint smoke test. Final human visual review also passed and confirmed that the corrected J1/J2/J3 decorative pivot markers align with their transverse joint axes.
 
-**Milestone 3 mechanical architecture is implemented and awaiting human review.**
+Two focused corrections were required. First, the installed PyChrono binding returns `ChBodyFrame` wrappers from `GetBody1()` and `GetBody2()` without `GetName()`. Connectivity validation now uses binding-tested direct equality against the exact stored `ChBody` references, preserving all parent/child checks and topology. Second, `ChVisualShapeCylinder` was confirmed to be intrinsically Z-aligned. Decorative Z-axis pivot cylinders now use identity rotation, while Y-axis cylinders rotate intrinsic Z to scene Y with `QuatFromAngleX(-π/2)`. Mechanical joint frames and pivot positions were unchanged.
+
+The accepted implementation is commit `408b50f231a4b2e3edfdc52ef51b1e13240b5f3f` (`feat: add excavator mechanical architecture`), and Milestone 3 tracking was finalized in `887a97be2eb5b68374bafc10104eff392bf41478` (`docs: finalize milestone 3 tracking`). The synchronized `feature/mechanical-architecture` branch is awaiting merge into `main`.
+
+**Milestone 3 mechanical implementation is accepted and ready for merge into main.**
