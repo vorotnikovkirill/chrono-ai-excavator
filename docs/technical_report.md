@@ -92,4 +92,14 @@ The accepted scene remains intentionally static and visually approximate. Track 
 
 ## 14. Next milestone
 
-**Milestone 3 — Mechanical Architecture** is the next planned milestone. It remains future work and has not started.
+### Milestone 3 — Mechanical Architecture
+
+Milestone 3 converts the accepted visual excavator into a minimal articulated topology while retaining the fixed platform, 30 fixed cubes, receiving container, lighting, and external camera. The accepted Milestone 2 static module remains the frozen visual reference; the new mechanical module groups its excavator primitives onto five primary bodies without redesigning their initial appearance.
+
+The topology is `BASE → UPPER → BOOM → STICK → BUCKET`. `BASE` is fixed; the other four bodies are dynamic. Four `ChLinkLockRevolute` joints provide `J0_SLEW` (BASE–UPPER), `J1_BOOM` (UPPER–BOOM), `J2_STICK` (BOOM–STICK), and `J3_BUCKET` (STICK–BUCKET). The slew axis follows scene vertical Y, while the three arm hinge axes are mutually parallel along scene Z and pass through the accepted visual pivots.
+
+Positive mass and diagonal inertia values are preliminary toy-model mechanical properties for architecture verification only. They are finite placeholders, not calibrated real-excavator properties. Architecture validation uses zero gravity and zero initial velocity so the unactuated mechanism retains its ready-to-scoop pose during a short constraint smoke test.
+
+Display-free validation checks body status and properties, joint names and connectivity, finite pivots and axes, retained environment geometry, absence of motor links and collision response, deterministic metadata, and short-step constraint stability. Motors, controllers, limits, contacts, cube dynamics, telemetry, and camera variants remain intentionally unimplemented.
+
+**Milestone 3 mechanical architecture is implemented and awaiting human review.**
