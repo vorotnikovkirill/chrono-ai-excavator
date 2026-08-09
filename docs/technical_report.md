@@ -2,7 +2,7 @@
 
 ## 1. Project objective
 
-The project demonstrates an end-to-end public engineering workflow that produces a fast, clear, and visually strong Project Chrono result. **Implemented:** the Milestone 1 foundation and the first fixed procedural scene for Milestone 2 visual review. **Current limitation:** no dynamic excavator simulation exists yet.
+The project demonstrates an end-to-end public engineering workflow that produces a fast, clear, and visually strong Project Chrono result. **Implemented:** the Milestone 1 foundation, the accepted Milestone 2 static scene, the accepted Milestone 3 articulated mechanics, and the accepted Milestone 4 torque actuation and basic joint control. **Current limitation:** contacts, dynamic cubes, and excavation sequencing do not exist yet.
 
 ## 2. Demonstrator concept
 
@@ -20,9 +20,9 @@ Every addition must either satisfy the current milestone or materially improve t
 
 The static visual excavator uses fixed, collision-free Project Chrono bodies with original box and cylinder geometry. Named components include two track assemblies and rollers, a lower chassis, a visual rotating platform, cabin and windows, rear body and counterweight, boom, stick, bucket, and dark pivot details. These bodies are presentation geometry only; they are not the future dynamic-body decomposition. Real track dynamics, CAD import, hydraulics, flexible bodies, and deformation remain excluded.
 
-## 6. Planned joint and torque-control concept
+## 6. Joint and torque-control concept
 
-Future revolute joints will represent swing, boom, stick, and bucket motion. A minimal controller is expected to command joint torque toward a scripted motion target, subject to what is visually useful and stable. No joints, motors, controllers, control state machine, or calibration exists yet.
+Revolute spindle constraints represent swing, boom, stick, and bucket motion. Milestone 4 implements four torque motors and bounded PD control toward deterministic scripted targets, as detailed in Section 15. The demonstrator gains are intentionally uncalibrated, and an excavation control state machine remains future work.
 
 ## 7. Planned contact scene
 
@@ -88,7 +88,7 @@ Required final project metrics are:
 
 ## 13. Current limitations
 
-The articulated excavator uses preliminary toy-model masses and inertias and zero gravity for architecture validation. Track belts remain visual, the environment and 30 cubes remain fixed, and pivot markers remain decorative. There are no motors, controllers, joint limits, contacts, dynamic cubes, telemetry, alternative cameras, rendered frames, PDF, presentation, or video. The living report will later become the source for the public technical PDF.
+The articulated excavator uses preliminary toy-model masses and inertias, while Milestone 4 uses zero gravity to isolate controller behavior. Track belts remain visual, the environment and 30 cubes remain fixed, and pivot markers remain decorative. There are no joint limits, contacts, dynamic cubes, excavation state machine, telemetry, alternative cameras, rendered frames, PDF, presentation, or video. The living report will later become the source for the public technical PDF.
 
 ## 14. Milestone 3 mechanical architecture
 
@@ -124,6 +124,10 @@ The accepted independent-joint and combined headless simulation loops took `0.26
 
 The corrected independent results are: slew 12.71° final with −0.71° error, 0.09° maximum hold deviation, and 454.59 N·m peak torque; boom 8.12° final with −0.12° error, 0.42° hold deviation, and 183.00 N·m peak; stick −7.89° final with −0.11° error, 0.44° hold deviation, and 82.01 N·m peak; and bucket 10.00° final with effectively zero error, 0.03° hold deviation, and 8.31 N·m peak. The combined four-joint smoke test also passes.
 
-Contacts, dynamic cubes, excavation sequencing, telemetry, HUD, camera variants, and video remain unimplemented.
+The final display-free verification passed the mechanical and controlled headless checks, the combined four-joint smoke test, all 38 unit tests, compilation, and whitespace validation. Human review accepted the controlled motion and explicitly accepted bucket motion below the platform as an expected consequence of the current no-contact scope.
 
-**Milestone 4 actuation and basic joint control are implemented and awaiting human review.**
+Two focused corrections were completed without changing acceptance criteria, targets, torque limits, mechanics, or scope. The first introduced retuned motion gains, distinct hold gains, and a deterministic two-second settling interval after the initial bounded controller failed fixed holding criteria. The second restored controlled-viewer lighting parity after human review found the platform appeared too bright: the existing platform material was already correct, so `AddTypicalLights()` was replaced with the exact accepted Milestone 2/3 directional and point lights. Camera, background, geometry, materials, and control behavior were unchanged. The final lighting review exited successfully and the project owner accepted the result.
+
+The accepted implementation is commit `9102f846191c71ec29ccd8fa1c7a2dcb84ab889b` (`feat: add bounded joint actuation control`), committed and pushed to `feature/joint-actuation-control`. Contacts, dynamic cubes, scoop/dump sequencing, excavation state-machine logic, telemetry/HUD, active-joint visualization, camera variants, and final video remain unimplemented.
+
+**Milestone 4 implementation is accepted and ready for merge into main.**
