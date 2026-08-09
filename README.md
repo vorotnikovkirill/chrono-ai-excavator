@@ -10,7 +10,9 @@ Chrono AI Excavator is a public engineering demonstrator built around a clear wo
 
 **Milestone 4 — complete.** Four torque-actuated joints, bounded PD motion control with distinct hold gains, fixed torque saturation, and deterministic smooth target trajectories were implemented and verified in zero gravity. All 38 tests pass, control motion and the corrected accepted-baseline lighting were visually accepted, and the accepted implementation was committed, pushed, fast-forward merged into `main`, and published in the public repository.
 
-Contacts, dynamic cubes, the scoop/dump sequence, excavation state machine, telemetry/HUD, active-joint visualization, bucket and cabin cameras, and final video remain future work.
+**Milestone 5 — in progress.** A separate `ChSystemNSC` contact scene now enables gravity and rigid contact for 30 dynamic cubes, the fixed platform, receiving container, and fixed bucket. Display-free pile settling and cube/platform, cube/cube, cube/container, and cube/bucket validation are implemented; human visual review remains pending.
+
+Moving the controlled excavator with contacts, the scoop/dump cycle, excavation state machine, telemetry/HUD, active-contact visualization, bucket and cabin cameras, and final video remain future work.
 
 The verified local environment is macOS 26.6 on arm64 with the `chrono` Conda environment, Python 3.12.13, and PyChrono. `ChSystemNSC`, `ChBody`, `ChLinkMotorRotationTorque`, Irrlicht, and postprocess are available. VSG and FFmpeg are unavailable and are not required for this milestone. PyChrono is supplied by Conda and is intentionally not declared as a PyPI dependency.
 
@@ -27,6 +29,8 @@ python scripts/show_mechanical_scene.py --headless-check
 python scripts/show_mechanical_scene.py
 python scripts/show_controlled_scene.py --headless-check
 python scripts/show_controlled_scene.py
+python scripts/show_contact_scene.py --headless-check
+python scripts/show_contact_scene.py
 python scripts/summarize_project_tracking.py
 PYTHONPATH=src python -m unittest discover -s tests -v
 ```
@@ -35,7 +39,7 @@ The `--headless-check` command and tests do not open a display. The viewer comma
 
 ## Roadmap
 
-Milestones 2, 3, and 4 are complete. The repository now contains the accepted static visual scene, five-body articulated mechanical architecture with four functional joint axes, and four torque-actuated joints with bounded PD motion/hold control and deterministic target trajectories. Contacts, dynamic cubes, bucket/cube interaction, scoop/dump behavior, an excavation state machine, telemetry/HUD, active-joint visualization, bucket and cabin cameras, rendering, and final video remain future work. PDF and presentation generation remain deferred.
+Milestones 2, 3, and 4 are complete. Milestone 5 contact physics and dynamic cubes are implemented and awaiting human review. Moving the controlled excavator with contacts, scoop/dump behavior, an excavation state machine, telemetry/HUD, active-contact visualization, bucket and cabin cameras, rendering, and final video remain future work. PDF and presentation generation remain deferred.
 
 See [the living technical report](docs/technical_report.md) and [the project ledger policy](project_tracking/README.md) for scope and evidence.
 
