@@ -6,7 +6,7 @@ Chrono AI Excavator is a public engineering demonstrator built around a clear wo
 
 **Milestone 2 — complete.** The first static Project Chrono scene was implemented, display-free verified, human visually accepted, committed, pushed, fast-forward merged into `main`, and published in the public repository. It uses original procedural primitives to show a bright block-style excavator in a ready-to-scoop pose, a fixed construction platform, 30 colored cubes, and an open receiving container.
 
-**Milestone 3 — accepted and ready for merge.** The articulated architecture is implemented, display-free verified, human visually accepted, committed, and pushed to `feature/mechanical-architecture`. It uses five primary mechanical bodies (`BASE`, `UPPER`, `BOOM`, `STICK`, and `BUCKET`), four functional revolute joints, and zero-gravity topology verification. It has not yet been merged into `main`.
+**Milestone 3 — complete.** The articulated architecture was implemented, display-free verified, human visually accepted, committed, pushed, fast-forward merged into `main`, and published in the public repository. It uses five primary mechanical bodies (`BASE`, `UPPER`, `BOOM`, `STICK`, and `BUCKET`), four functional revolute joints, and zero-gravity topology verification.
 
 Motors, torque control, state-machine control, contacts, dynamic cubes, telemetry, active-joint visualization, bucket-mounted and cabin/operator cameras, and video remain future work.
 
@@ -31,7 +31,7 @@ The `--headless-check` command and tests do not open a display. The viewer comma
 
 ## Roadmap
 
-Milestone 2 remains complete. Milestone 3 mechanical architecture is accepted and awaiting merge into `main`. Motors, control, contacts, telemetry, camera variants, rendering, and video remain future work. PDF and presentation generation remain deferred.
+Milestones 2 and 3 are complete. Motors, control, contacts, telemetry, camera variants, rendering, and video remain future work. PDF and presentation generation remain deferred.
 
 See [the living technical report](docs/technical_report.md) and [the project ledger policy](project_tracking/README.md) for scope and evidence.
 
