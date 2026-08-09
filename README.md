@@ -10,7 +10,7 @@ Chrono AI Excavator is a public engineering demonstrator built around a clear wo
 
 **Milestone 4 — complete.** Four torque-actuated joints, bounded PD motion control with distinct hold gains, fixed torque saturation, and deterministic smooth target trajectories were implemented and verified in zero gravity. All 38 tests pass, control motion and the corrected accepted-baseline lighting were visually accepted, and the accepted implementation was committed, pushed, fast-forward merged into `main`, and published in the public repository.
 
-**Milestone 5 — in progress.** A separate `ChSystemNSC` contact scene now enables gravity and rigid contact for 30 dynamic cubes, the fixed platform, receiving container, and fixed bucket. Display-free pile settling and cube/platform, cube/cube, cube/container, and cube/bucket validation are implemented; human visual review remains pending.
+**Milestone 5 — accepted and ready for merge.** A separate `ChSystemNSC` contact scene enables gravity and rigid contact for 30 dynamic cubes, the fixed platform, receiving container, and fixed bucket. Deterministic pile settling and cube/platform, cube/cube, cube/container, and cube/bucket validation pass, as do all 50 tests. Human review accepted that cubes may initially appear as a settled-looking pile while remaining dynamic; meaningful visible motion is expected during later bucket interaction. Commit `44079cb36ce11a3f56946a038d57a7fa1fb08ae5` was pushed to `feature/contact-dynamic-cubes`, which is awaiting merge into `main`.
 
 Moving the controlled excavator with contacts, the scoop/dump cycle, excavation state machine, telemetry/HUD, active-contact visualization, bucket and cabin cameras, and final video remain future work.
 
@@ -39,7 +39,7 @@ The `--headless-check` command and tests do not open a display. The viewer comma
 
 ## Roadmap
 
-Milestones 2, 3, and 4 are complete. Milestone 5 contact physics and dynamic cubes are implemented and awaiting human review. Moving the controlled excavator with contacts, scoop/dump behavior, an excavation state machine, telemetry/HUD, active-contact visualization, bucket and cabin cameras, rendering, and final video remain future work. PDF and presentation generation remain deferred.
+Milestones 2, 3, and 4 are complete. Milestone 5 contact physics and dynamic cubes are accepted on `feature/contact-dynamic-cubes` and awaiting merge into `main`. Moving the controlled excavator with contacts, bucket loading, scoop/dump behavior, an excavation state machine, telemetry/HUD, active-contact visualization, bucket and cabin cameras, rendering, and final video remain future work. PDF and presentation generation remain deferred.
 
 See [the living technical report](docs/technical_report.md) and [the project ledger policy](project_tracking/README.md) for scope and evidence.
 
