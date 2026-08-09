@@ -4,9 +4,9 @@ Chrono AI Excavator is a public engineering demonstrator built around a clear wo
 
 ## Current status
 
-**Milestone 1 — accepted, published, and complete.** The initial scaffold was committed and is now publicly available at [vorotnikovkirill/chrono-ai-excavator](https://github.com/vorotnikovkirill/chrono-ai-excavator). This milestone contains only the repository scaffold, environment checks, project ledger, tests, and documentation foundation.
+**Milestone 2 — static visual composition accepted.** The first static Project Chrono scene is implemented, display-free verification passed, and project-owner visual review passed. It uses original procedural primitives to show a bright block-style excavator in a ready-to-scoop pose, a fixed construction platform, 30 colored cubes, and an open receiving container. These changes remain on `feature/first-visual-scene` pending repository review, commit, and push.
 
-No Milestone 2 functionality exists. Excavator geometry, joints, motors, contacts, control, telemetry, cameras, rendering, PDF, presentation, and video are not implemented.
+All scene bodies are fixed and collision-free. Dynamics, joints, contacts, control, telemetry, bucket and cabin cameras, rendered output, PDF, presentation, and video are not implemented.
 
 The verified local environment is macOS 26.6 on arm64 with the `chrono` Conda environment, Python 3.12.13, and PyChrono. `ChSystemNSC`, `ChBody`, `ChLinkMotorRotationTorque`, Irrlicht, and postprocess are available. VSG and FFmpeg are unavailable and are not required for this milestone. PyChrono is supplied by Conda and is intentionally not declared as a PyPI dependency.
 
@@ -17,15 +17,17 @@ From the repository root, activate the existing environment and run:
 ```bash
 conda activate chrono
 python scripts/check_environment.py
+python scripts/show_static_scene.py --headless-check
+python scripts/show_static_scene.py
 python scripts/summarize_project_tracking.py
 PYTHONPATH=src python -m unittest discover -s tests -v
 ```
 
-No display window is opened. The current verified environment does not include pytest; the display-free tests use the Python standard-library `unittest` runner, and Milestone 1 does not authorize installing packages.
+The `--headless-check` command and tests do not open a display. The viewer command opens the interactive Irrlicht window for required human visual inspection. The current verified environment does not include pytest; display-free tests use the Python standard-library `unittest` runner, and this milestone does not authorize installing packages.
 
 ## Roadmap
 
-Milestone 2 is the next planned step and will create the first visual static scene. Dynamics, joints, contacts, torque control, telemetry, and cameras remain future work. Planned views include a cinematic external camera, a bucket-mounted camera, and a cabin/operator-view camera. PDF and presentation generation remain deferred until a visually meaningful milestone.
+The next step is repository review followed by commit and push of the accepted static scene. Dynamics, joints, contacts, torque control, telemetry, bucket and cabin cameras, rendering, and video remain future work. PDF and presentation generation remain deferred.
 
 See [the living technical report](docs/technical_report.md) and [the project ledger policy](project_tracking/README.md) for scope and evidence.
 

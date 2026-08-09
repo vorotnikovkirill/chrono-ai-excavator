@@ -2,11 +2,11 @@
 
 ## 1. Project objective
 
-The project will demonstrate an end-to-end public engineering workflow that produces a fast, clear, and visually strong Project Chrono result. **Implemented:** the Milestone 1 repository and documentation foundation. **Current limitation:** no excavator simulation exists yet.
+The project demonstrates an end-to-end public engineering workflow that produces a fast, clear, and visually strong Project Chrono result. **Implemented:** the Milestone 1 foundation and the first fixed procedural scene for Milestone 2 visual review. **Current limitation:** no dynamic excavator simulation exists yet.
 
 ## 2. Demonstrator concept
 
-The planned demonstrator is an original block-style toy excavator that scoops colored rigid cubes from a platform, rotates, and dumps them into a container. This is future work, not implemented functionality. It will not reproduce a specific commercial toy set or use protected branding.
+The demonstrator concept is an original block-style toy excavator that will eventually scoop colored rigid cubes from a platform, rotate, and dump them into a container. The recognizable static composition now exists, but the scoop-and-dump behavior remains future work. It does not reproduce a specific commercial toy set or use protected branding.
 
 ## 3. ChatGPT → Codex → Project Chrono workflow
 
@@ -18,7 +18,7 @@ Every addition must either satisfy the current milestone or materially improve t
 
 ## 5. Planned mechanical architecture
 
-**Planned assumption:** a compact rigid-body assembly will approximate a tracked base, rotating upper structure, boom, stick, and bucket using original procedural block geometry. Real track dynamics, CAD import, hydraulics, flexible bodies, and deformation are outside the present plan. No geometry or rigid-body assembly has been implemented.
+The static visual excavator uses fixed, collision-free Project Chrono bodies with original box and cylinder geometry. Named components include two track assemblies and rollers, a lower chassis, a visual rotating platform, cabin and windows, rear body and counterweight, boom, stick, bucket, and dark pivot details. These bodies are presentation geometry only; they are not the future dynamic-body decomposition. Real track dynamics, CAD import, hydraulics, flexible bodies, and deformation remain excluded.
 
 ## 6. Planned joint and torque-control concept
 
@@ -26,17 +26,27 @@ Future revolute joints will represent swing, boom, stick, and bucket motion. A m
 
 ## 7. Planned contact scene
 
-Future rigid colored cubes will rest on a platform and interact with the bucket before being deposited in a container. Contact material choices and solver settings remain future engineering decisions. No platform, cubes, container, contacts, or contact materials exist yet.
+The scene includes a thick fixed dark-gray platform, a deterministic loose pile of 30 bright fixed cubes near the bucket, and a contrasting open orange receiving container made from a floor and four walls. The composition communicates the intended task, but no collisions, contact materials, solver behavior, cube dynamics, or loading behavior exists.
 
 ## 8. Planned visualization and camera views
 
-The planned final visualization includes a cinematic external camera, a bucket-mounted camera, and a cabin/operator-view camera. It may show active joints, target and actual motion, commanded actuator torque, contact activity, and selected telemetry. No cameras, HUD, camera switching, plots, frames, or video exist yet.
+The Milestone 2 script provides one perspective external Irrlicht camera, a neutral blue-gray background, the procedural platform, and simple useful lighting. Normal Irrlicht interaction lets the project owner orbit and inspect the complete fixed scene. Alternative cameras, HUD, camera switching, animation, plots, frame output, and video do not exist.
 
-## 9. Milestone 0 preflight results
+## 9. Milestone 2 static visual scene
+
+The purpose of this milestone is visual communication and human acceptance before any physical complexity is introduced. `static_scene.py` builds the complete display-independent Chrono system and exposes immutable object metadata, a named body registry, camera framing, validation, and a concise summary. `show_static_scene.py` uses that same build path for either headless validation or the interactive Irrlicht window.
+
+The ready-to-scoop excavator faces the compact cube pile with its boom raised, stick descending, and bucket close to the pile. The receiving container is offset across the platform so a future upper-structure rotation could reach it. The palette deliberately separates warm construction components, dark running gear, blue-tinted windows, multicolored cubes, and the orange container.
+
+The static-scene implementation is complete. The accepted composition contains the procedural excavator, platform, 30 colored cubes, receiving container, lighting, and external camera. Automated checks verify names, required components, cube count, dimensions, finite transforms, a reasonable composition bound, fixed bodies, and deterministic metadata without opening a display. They cannot assess silhouette, occlusion, perceived scale, color balance, or camera appeal.
+
+The project owner performed the separate interactive human visual review and accepted the composition without requesting visual corrections. Human visual acceptance is distinct from automated verification. The temporary Step 06D log is unavailable, so the viewer exit status is `unavailable` and was not inferred; this does not invalidate the recorded human acceptance.
+
+## 10. Milestone 0 preflight results
 
 **Verified findings:** macOS 26.6 arm64, Python 3.12.13 in the `chrono` Conda environment, PyChrono, `ChSystemNSC`, `ChBody`, `ChLinkMotorRotationTorque`, Irrlicht, and postprocess are available. VSG and FFmpeg are unavailable and unnecessary for Milestone 1. A minimal gravity smoke test passed during preflight. Three runs were needed: one initial run and two corrections. The source brief supplies the historical timestamps and evidence paths.
 
-## 10. Milestone 1 scope and outputs
+## 11. Milestone 1 scope and outputs
 
 **Accepted, published, and implemented:** repository policy, packaging metadata, package version, display-free environment verification, deterministic tests, standard-library project-ledger validation and summary, a living report, and preserved prompts. Milestone 1 is fully closed. The initial local commit was created and the accepted scaffold was published as the public repository [`vorotnikovkirill/chrono-ai-excavator`](https://github.com/vorotnikovkirill/chrono-ai-excavator).
 
@@ -44,7 +54,7 @@ The published commit is `b94197bd10a0f227bad7aa915a48b8e7aac6a323`. Publication 
 
 One publication orchestration attempt failed before publication. Codex task execution never started because a global approval argument was placed after the `exec` subcommand, and unittest discovery omitted `PYTHONPATH=src`. Environment verification, the tracking summary, and compilation still passed. These were orchestration defects and did not invalidate the accepted scaffold. Pytest remains absent from the `chrono` environment, package installation remains prohibited, and the display-free tests run through standard-library `unittest`.
 
-## 11. Project effort, tooling, and cost ledger
+## 12. Project effort, tooling, and cost ledger
 
 The CSV ledger records calendar duration without overlap double-counting and reports human active effort, AI-assisted development wall time, simulation/computation wall time, documented software and infrastructure cost, and iteration/rework counts. Historical project-owner active effort is an approximate 25 minutes with a plausible 20–30 minute range. Historical ChatGPT generation time and command-review effort are unknown and are not invented. Subscription costs and incremental ChatGPT/Codex project costs are not separately measurable from available evidence.
 
@@ -70,10 +80,10 @@ Required final project metrics are:
 - software and infrastructure cost;
 - initial, correction, repeat, and rework counts.
 
-## 12. Current limitations
+## 13. Current limitations
 
-No excavator simulation, geometry, joint, motor, controller, contact scene, telemetry, camera, render, PDF, presentation, or video exists. No Milestone 2 functionality has been implemented. PDF and presentation generation remain deferred until the first visually meaningful milestone. The living report will later become the source for the public technical PDF.
+The accepted scene remains intentionally static and visually approximate. Track belts are block silhouettes, the bucket is assembled from simple boxes, and pivot details are decorative. There are no dynamic bodies, joints, motors, controllers, contacts, telemetry, alternative cameras, rendered frames, PDF, presentation, or video. The living report will later become the source for the public technical PDF.
 
-## 13. Next milestone
+## 14. Next step
 
-Milestone 2 will create the first visual static scene and matching verification while updating the README, report, ledger, tests, and preserved prompt. Exact architecture remains a future decision rather than an assumption embedded in this scaffold.
+The next action is repository review followed by commit and push of the accepted Milestone 2 static-scene result. Later dynamic implementation remains future work and has not started.
